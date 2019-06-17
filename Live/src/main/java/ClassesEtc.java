@@ -1,6 +1,6 @@
 import java.util.concurrent.ThreadLocalRandom;
 
-public class FirstDemo {
+public class ClassesEtc {
 	
 	public static void main(String [] args) {
 		//switchDemo();
