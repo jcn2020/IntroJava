@@ -1,0 +1,2 @@
+Client code has to be generated using
+wsimport -keep -p jaxwser.client http://localhost:8080/fileInfoService?wsdl

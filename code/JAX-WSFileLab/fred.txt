@@ -1,0 +1,9 @@
+Hello,
+this is a file, called fred.txt
+
+It contains text.
+
+Nothing very exciting or radical.
+Certainly nothing subversive. Nope, nothing of that sort.
+
+Bye!
