@@ -72,4 +72,9 @@ public class Account {
 	public void monthEnd() { 
 		System.out.println("Balance at end of month is " + balance);
 	}
+	
+	@Override
+	public String toString() {
+		return "Account [id=" + id + ", name=" + name + ", balance=" + balance + "]";
+	}
 }

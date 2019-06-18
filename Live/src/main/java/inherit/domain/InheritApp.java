@@ -3,7 +3,34 @@ package inherit.domain;
 public class InheritApp {
 	
 	public static void main(String[] args) {
-		testMonthEnd();
+		//testMonthEnd();
+		//polymorphicArray();
+		testToString();
+	}
+	
+	public static void testToString() {
+		int i = 10;
+		Account a = new Account("Sam", 28282);
+		System.out.println(i + ", " + a);
+	}
+	
+	public static void polymorphicArray()  {
+		Account [] accounts = new Account[4];
+		
+		accounts[0] = new Account("Sam", 28282);
+		accounts[1] = new CheckingAccount("Sabina", 28282);
+		accounts[2] = new SavingsAccount("Roshan", 28282);
+		accounts[3] = new SavingsAccount("Green", 3839);
+		
+		
+		for(Account account : accounts) {
+			account.monthEnd();
+			
+			if(account instanceof CheckingAccount) {
+				CheckingAccount ca = (CheckingAccount)account;
+				ca.foo();
+			}
+		}
 	}
 
 	public static void testMonthEnd() {
@@ -17,8 +44,12 @@ public class InheritApp {
 		System.out.println("ca balance is " + ca.getBalance());
 		
 		
+
 		Account account = ca;
 		account.withdraw(20);
+		
+		Object o = ca;
+
 		
 		SavingsAccount sa = new SavingsAccount("Cruz", 600);
 		sa.monthEnd();

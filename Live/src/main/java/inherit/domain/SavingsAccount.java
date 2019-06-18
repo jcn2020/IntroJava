@@ -18,6 +18,8 @@ public class SavingsAccount extends Account {
 	public void monthEnd() {
 		double interest = getBalance() * interestRate;
 		deposit(interest);
+		
+		System.out.println("SavingsAccount.monthEnd");
 	}
 
 }
