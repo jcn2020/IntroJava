@@ -36,7 +36,9 @@ public class MixerSolution {
       break;
       default:
         Arrays.sort(args);
-        Map<String, Integer> frequencyMap = getFrequencyMap(args);
+        //Map<String, Integer> frequencyMap = getFrequencyMap(args);
+        //Map<String, Integer> frequencyMap = getFrequencyMap3(args);
+        Map<String, Integer> frequencyMap = getFrequencyMap4(args);
         printFrequenceMap(frequencyMap);
       break;
     }
@@ -70,7 +72,24 @@ public class MixerSolution {
 
     return returnMap;
   }
+
+  private static Map<String, Integer> getFrequencyMap3(String[] args) {
+    Map<String, Integer> returnMap = new TreeMap<String, Integer>();
+    for(String arg : args) {
+    	returnMap.computeIfAbsent(arg, i -> new Integer(0));
+    	returnMap.computeIfPresent(arg, (k, v) -> v + 1);
+    	
+    }
+    return returnMap;
+  }
   
+  private static Map<String, Integer> getFrequencyMap4(String[] args) {
+    Map<String, Integer> returnMap = new TreeMap<String, Integer>();
+    for(String arg : args) {
+    	returnMap.merge(arg, new Integer(1), (orig, current) -> current + 1);
+    }
+    return returnMap;
+  }
   private static void printFrequenceMapLamda(Map<String, Integer> frequencyMap) {
 	  frequencyMap.forEach((k, v) -> System.out.println(k + "=" + v));
   }
