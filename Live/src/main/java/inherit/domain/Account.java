@@ -1,11 +1,9 @@
-package com.sb.domain;
-
-import java.util.UUID;
+package inherit.domain;
 
 public class Account {
 	private int id;
 	private String name;
-	private double balance = 55;
+	private double balance;
 	
 	private static int nextId; 
 	
@@ -14,14 +12,11 @@ public class Account {
 		nextId = 1;
 	}
 	
-	public static int getNextId() {
-		
-		UUID randomId = UUID.randomUUID();
-		return nextId;
-	}
 	
+	/*
 	public Account() {
 	}
+	*/
 	
 	public Account(String name, double balance) {
 		//this(-1, n, b);
@@ -36,6 +31,10 @@ public class Account {
 	
 	public int getId() {
 		return id;
+	}
+
+	public static int getNextId() {
+		return nextId;
 	}
 	/*
 	public Account(int i, String n, double b) {
@@ -58,11 +57,19 @@ public class Account {
 		return false;
 	}
 
+	public void deposit(double amt) {
+		balance += amt;
+	}
+
 	public String getName() {
 		return name;
 	}
 	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void monthEnd() { 
+		System.out.println("Balance at end of month is " + balance);
 	}
 }

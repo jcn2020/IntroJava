@@ -1,4 +1,6 @@
-package com.sb.domain;
+package com.sb.app;
+
+import com.sb.domain.Account;
 
 public class BankApp {
 
@@ -14,6 +16,7 @@ public class BankApp {
 		System.out.println("Next id is now " + Account.getNextId());
 
 		Account a1 = new Account("Joe", 33333.00);
+
 		Account a2 = new Account("Charlene", 38383.93);
 		Account a3 = new Account("Manoj", 38383.93);
 		
