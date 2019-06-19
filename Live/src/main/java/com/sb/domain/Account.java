@@ -1,5 +1,7 @@
 package com.sb.domain;
 
+import java.util.UUID;
+
 public class Account {
 	private int id;
 	private String name;
@@ -14,6 +16,7 @@ public class Account {
 	
 	public static int getNextId() {
 		
+		UUID randomId = UUID.randomUUID();
 		return nextId;
 	}
 	
@@ -35,7 +38,7 @@ public class Account {
 		return id;
 	}
 	/*
-	public Account(int i, String n, double b) {
+	public AbstractAccount(int i, String n, double b) {
 		id = i;
 		name = n;
 		balance = b;
