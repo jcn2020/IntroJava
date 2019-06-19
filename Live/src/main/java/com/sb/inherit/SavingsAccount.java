@@ -1,4 +1,4 @@
-package inherit.domain;
+package com.sb.inherit;
 
 public class SavingsAccount extends Account {
 	
