@@ -38,7 +38,7 @@ public class Account {
 		return id;
 	}
 	/*
-	public Account(int i, String n, double b) {
+	public AbstractAccount(int i, String n, double b) {
 		id = i;
 		name = n;
 		balance = b;

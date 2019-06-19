@@ -1,24 +1,25 @@
-package com.sb.inherit;
+package com.sb.com.sb.inherit;
 
-public class Account {
+import java.util.Objects;
+
+public class AccountOriginal {
 	private int id;
 	private String name;
 	private double balance;
-	
-	private static int nextId; 
-	
+
+	private static int nextId;
+
 	static {
-		//read next Id from DB
 		nextId = 1;
 	}
-	
-	
+
+
 	/*
-	public Account() {
+	public AbstractAccount() {
 	}
 	*/
-	
-	public Account(String name, double balance) {
+
+	public AccountOriginal(String name, double balance) {
 		//this(-1, n, b);
 
 		this.id = nextId++;
@@ -28,7 +29,11 @@ public class Account {
 		//Go To DataBase and get info
 		this.balance = balance;
 	}
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -37,7 +42,7 @@ public class Account {
 		return nextId;
 	}
 	/*
-	public Account(int i, String n, double b) {
+	public AbstractAccount(int i, String n, double b) {
 		id = i;
 		name = n;
 		balance = b;
@@ -72,9 +77,24 @@ public class Account {
 	public void monthEnd() { 
 		System.out.println("Balance at end of month is " + balance);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", name=" + name + ", balance=" + balance + "]";
+		return "AbstractAccount [id=" + id + ", name=" + name + ", balance=" + balance + "]";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		AccountOriginal account = (AccountOriginal) o;
+		return id == account.id &&
+				Double.compare(account.balance, balance) == 0 &&
+				Objects.equals(name, account.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, balance);
 	}
 }

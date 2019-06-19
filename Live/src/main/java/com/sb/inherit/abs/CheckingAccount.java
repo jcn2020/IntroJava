@@ -1,13 +1,13 @@
-package com.sb.inherit;
+package com.sb.inherit.abs;
 
-public class CheckingAccount extends Account {
+public class CheckingAccount extends AbstractAccount {
 	
 	private double minBalance = 500;
 	
 	public CheckingAccount(String name, double initialAmount) {
 		super(name, initialAmount);
 	}
-	
+
 	@Override
 	public boolean withdraw(double amt) {
 		if( getBalance() > amt + minBalance) {
@@ -16,9 +16,14 @@ public class CheckingAccount extends Account {
 		
 		return false;
 	}
-	
+
 	public void foo() {
 		
+	}
+
+	@Override
+	public void monthEnd() {
+		System.out.println("Month End");
 	}
 
 }

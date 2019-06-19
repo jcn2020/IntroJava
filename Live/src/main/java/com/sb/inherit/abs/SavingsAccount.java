@@ -1,6 +1,6 @@
-package com.sb.inherit;
+package com.sb.inherit.abs;
 
-public class SavingsAccount extends Account {
+public class SavingsAccount extends AbstractAccount {
 	
 	private double interestRate = .1;
 	
