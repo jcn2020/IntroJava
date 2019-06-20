@@ -4,7 +4,7 @@ public class SavingsAccount extends AbstractAccount {
 	
 	private double interestRate = .1;
 	
-	public SavingsAccount(String name, double initialAmount) {
+	public SavingsAccount(String name, double initialAmount) throws BankException {
 		/*
 		if(initialAmount < 500 ) {
 			

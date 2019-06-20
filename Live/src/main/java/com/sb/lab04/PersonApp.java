@@ -2,12 +2,15 @@ package com.sb.lab04;
 
 import java.time.LocalDate;
 
+import com.sb.lab04.Person.Gender;
+
 public class PersonApp {
 
 	public static void main(String[] args) {
 		Person[] persons = {
-				new Person("Sam", "Smith", "Male", 2, 23),
-				new UniversityPerson("Charlie", "Daniels", "Male",
+				//new Person("Sam", "Smith", "Male", 2, 23),
+				new Person("Sam", "Smith", Gender.FEMALE, 2, 23),
+				new UniversityPerson("Charlie", "Daniels", Gender.MALE,
 						2, 23, true)
 		};
 

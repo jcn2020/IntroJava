@@ -4,7 +4,14 @@ public class Person {
 
 	private String firstName;
 	private String lastName;
-	private String gender;
+	private Gender gender;
+	
+	public enum Gender
+	{
+		MALE,
+		FEMALE,
+		OTHER
+	}
 
 	private int month;
 	private int day;
@@ -13,7 +20,7 @@ public class Person {
 	public Person() {
 	}
 
-	public Person(String firstName, String lastName, String gender, int month, int day) {
+	public Person(String firstName, String lastName, Gender gender, int month, int day) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
@@ -21,7 +28,7 @@ public class Person {
 		this.day = day;
 	}
 
-	public Person(String firstName, String lastName, String gender) {
+	public Person(String firstName, String lastName, Gender gender) {
 		this(firstName, lastName, gender, 0, 0);
 	}
 
@@ -36,13 +43,20 @@ public class Person {
 
 	public String getSalutation() {
 		switch (gender) {
-		case "Male":
+		//case "Male":
+		case MALE:
 			return "Mr.";
-		case "Female":
+		//case "Female":
+		case FEMALE:
 			return "Ms.";
+
+		case OTHER:
+			return "O.";
 		}
 		
 		return "";
+		
+		
 	}
 	
 	public boolean isBirthday(int month, int day) {
@@ -68,11 +82,11 @@ public class Person {
 		this.lastName = lastName;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 

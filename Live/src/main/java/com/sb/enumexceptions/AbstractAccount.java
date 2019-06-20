@@ -30,8 +30,11 @@ public abstract class AbstractAccount implements Account {
 	}
 	*/
 
-	public AbstractAccount(String name, double balance) {
+	public AbstractAccount(String name, double initialBalance) throws BankException {
 		//this(-1, n, b);
+		if(initialBalance <= 0) {
+			throw new BankException("Initial Balance is too low: " + initialBalance);
+		}
 
 		this.id = nextId++;
 
@@ -40,7 +43,7 @@ public abstract class AbstractAccount implements Account {
 		//Go To DataBase and get info
 		this.balance = balance;
 	}
-
+	
 	public AbstractAccount(String name, double balance, Status status) {
 		//this(-1, n, b);
 
@@ -51,6 +54,14 @@ public abstract class AbstractAccount implements Account {
 		//Go To DataBase and get info
 		this.balance = balance;
 		this.status = status;
+		
+	}
+	
+	public int foo(int value) {
+		if(value < 0) {
+			return -1;
+		}
+		return value + 10;
 	}
 
 	public void setId(int id) {
