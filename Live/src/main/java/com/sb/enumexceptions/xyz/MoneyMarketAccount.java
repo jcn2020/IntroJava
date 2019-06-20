@@ -1,10 +1,14 @@
-package com.sb.enumexceptions;
+package com.sb.enumexceptions.xyz;
 
-public class SavingsAccount extends AbstractAccount {
+import com.sb.enumexceptions.AbstractAccount;
+import com.sb.enumexceptions.BankException;
+import com.sb.enumexceptions.Status;
+
+public class MoneyMarketAccount extends AbstractAccount {
 	
 	private double interestRate = .1;
 	
-	public SavingsAccount(String name, double initialAmount) {
+	public MoneyMarketAccount(String name, double initialAmount) {
 		if(initialAmount < 500 ) {
 			throw new BankException("InitialAmount is too low: " + initialAmount);
 		}

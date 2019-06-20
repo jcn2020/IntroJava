@@ -1,4 +1,4 @@
-package com.sb.enumexceptions;
+package com.sb.lambda;
 
 import java.util.Objects;
 
