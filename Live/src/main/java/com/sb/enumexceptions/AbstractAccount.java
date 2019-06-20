@@ -30,7 +30,7 @@ public abstract class AbstractAccount implements Account {
 	}
 	*/
 
-	public AbstractAccount(String name, double initialBalance) throws BankException {
+	public AbstractAccount(String name, double initialBalance) {
 		//this(-1, n, b);
 		if(initialBalance <= 0) {
 			throw new BankException("Initial Balance is too low: " + initialBalance);
