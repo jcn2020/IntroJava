@@ -6,8 +6,8 @@ public class InheritAppAbstract {
 	
 	public static void main(String[] args) {
 		//listDemo();
-		//setDemo();
-		mapDemo();
+		setDemo();
+		//mapDemo();
 
 	}
 
@@ -39,7 +39,7 @@ public class InheritAppAbstract {
 
 	public static void mapDemo() {
 		Map<Integer, Account> byId = new HashMap<>();
-		List<Account> accounts = new ArrayList<>();
+
 
 		Account ac = new CheckingAccount("Bob", 38383);
 		byId.put(ac.getId(), ac);
@@ -65,20 +65,28 @@ public class InheritAppAbstract {
 
 			System.out.println(key + ": " + value);
 		}
+		
+		byId.forEach((key, value) -> System.out.println(key + ": " + value));
 	}
-
-	public static void setDemo() {
+	
+	public void someWork() {
+		Set<Account> accounts = setDemo();
+	}
+	
+	
+	public static Set<Account> setDemo() {
 		Set<Account> accounts = new HashSet<>();
 		Account ac = new CheckingAccount("Bob", 38383);
 		accounts.add(ac);
 		ac = new SavingsAccount("Bobery", 38383);
 		accounts.add(ac);
-
 		accounts.add(ac);
 
 		for(Account a : accounts) {
 			System.out.println(a);
 		}
+		
+		return accounts;
 
 	}
 
@@ -94,8 +102,8 @@ public class InheritAppAbstract {
 	    Account [] accounts = new Account[10];
 
 
-		//List<Account> lAccounts = new ArrayList<>();
-		List<Account> lAccounts = new LinkedList<>();
+		List<Account> lAccounts = new ArrayList<>();
+		//List<Account> lAccounts = new LinkedList<>();
 		Account ac = new CheckingAccount("Bob", 38383);
 		lAccounts.add(ac);
 

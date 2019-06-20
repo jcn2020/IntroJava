@@ -4,7 +4,7 @@ public class UniversityPerson extends Person {
 
     private boolean isTeacher;
 
-    public UniversityPerson(String firstName, String lastName, String gender,
+    public UniversityPerson(String firstName, String lastName, Gender gender,
                             int month, int day, boolean isTeacher) {
         super(firstName, lastName, gender, month, day);
 
@@ -12,7 +12,7 @@ public class UniversityPerson extends Person {
     }
 
 
-    public UniversityPerson(String firstName, String lastName, String gender, boolean isTeacher) {
+    public UniversityPerson(String firstName, String lastName, Gender gender, boolean isTeacher) {
         //super(firstName, lastName, gender, 0, 0);
         this(firstName, lastName, gender, 0, 0, isTeacher);
     }
