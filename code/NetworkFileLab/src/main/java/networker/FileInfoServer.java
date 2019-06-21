@@ -19,7 +19,8 @@ public class FileInfoServer {
 	}
 
 	public void go() {
-		ExecutorService es = Executors.newFixedThreadPool(20);
+		int num = Runtime.getRuntime().availableProcessors();
+		ExecutorService es = Executors.newFixedThreadPool(num);
 
 		try (ServerSocket ss = new ServerSocket(1234);) {
 			System.out.println("Started the File Info server");
@@ -28,6 +29,7 @@ public class FileInfoServer {
 					Socket s = ss.accept();
 					System.out.println("Got a conection!");
 					RequestHandler rs = new RequestHandler(s);
+					//rs.run();
 					es.execute(rs);
 					// processRequest(s);
 				} catch (IOException ioe) {
@@ -58,7 +60,10 @@ public class FileInfoServer {
 				StringBuffer response = new StringBuffer();
 				if (file.exists()) {
 					response.append(
-							file.getAbsolutePath() + ": size = " + file.length() + ", readable:" + file.canRead());
+							file.getAbsolutePath()).append(": size = ")
+							.append(file.length())
+							.append( ", readable:")
+							.append(file.canRead());
 				} else {
 					response.append("File " + line + " does not Exist");
 				}

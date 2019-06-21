@@ -46,6 +46,7 @@ public class SimpleFile {
 					System.out.println("  " + (Files.isReadable(f) ? "is" : "is not") + " readable");
 					System.out.println("  " + (Files.isWritable(f) ? "is" : "is not") + " writeable");
 					System.out.println("  and contains " + Files.size(f) + " bytes");
+
 					List<String> lines = Files.readAllLines(f, Charset.defaultCharset());
 					for (String line : lines) {
 						System.out.println("> " + line);
