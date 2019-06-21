@@ -10,7 +10,19 @@ public class EnumApp {
 
 	public static void main(String[] args) {
 		// enumDemo();
-		exceptions();
+		//exceptions();
+		runtimeExceptions();
+		//EnumApp ea = new EnumApp();
+		//ea.getFromFileWithReources("pom.xml");
+	}
+	
+	public static void runtimeExceptions() {
+		try {
+			Account a = new SavingsAccount("Joe", 0);
+		}
+		catch(BankException e) {
+			
+		}
 	}
 
 	public static void exceptions() {
@@ -53,10 +65,21 @@ public class EnumApp {
 
 		return -1;
 	}
+	
+	class MyClass implements AutoCloseable
+	{
+
+		@Override
+		public void close() {
+			System.out.println("MyClose.close called");
+		}
+		
+	}
 
 	public int getFromFileWithReources(String fileName) {
 
-		try (FileInputStream fis = new FileInputStream(fileName)) {
+		try (FileInputStream fis = new FileInputStream(fileName);
+				MyClass mc = new MyClass()) {
 			int val = fis.read();
 
 			return val;

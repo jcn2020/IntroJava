@@ -1,4 +1,4 @@
-package com.sb.enumexceptions;
+package com.sb.lambda;
 
 import java.util.Objects;
 
@@ -123,5 +123,18 @@ public abstract class AbstractAccount implements Account {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, balance);
+	}
+
+	@Override
+	public int compareTo(Account other) {
+		if(this.id < other.getId()) {
+			return -1;
+		}
+		else if(this.id == other.getId()) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
 	}
 }

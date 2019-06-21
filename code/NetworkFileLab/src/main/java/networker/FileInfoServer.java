@@ -21,25 +21,23 @@ public class FileInfoServer {
 	public void go() {
 		ExecutorService es = Executors.newFixedThreadPool(20);
 
-		ServerSocket ss = null;
-		try {
-			ss = new ServerSocket(1234);
-			System.out.println("Started File Info server");
+		try (ServerSocket ss = new ServerSocket(1234);) {
+			System.out.println("Started the File Info server");
+			for (;;) {
+				try {
+					Socket s = ss.accept();
+					System.out.println("Got a conection!");
+					RequestHandler rs = new RequestHandler(s);
+					es.execute(rs);
+					// processRequest(s);
+				} catch (IOException ioe) {
+					System.err.println("Network problem:");
+					ioe.printStackTrace(System.err);
+				}
+			}
 		} catch (IOException e) {
 			System.err.println("Failed to create server socket");
 			System.exit(1);
-		}
-		for (;;) {
-			try {
-				Socket s = ss.accept();
-				System.out.println("Got a conection!");
-				RequestHandler rs = new RequestHandler(s);
-				es.execute(rs);
-				// processRequest(s);
-			} catch (IOException ioe) {
-				System.err.println("Network problem:");
-				ioe.printStackTrace(System.err);
-			}
 		}
 	}
 
@@ -54,21 +52,19 @@ public class FileInfoServer {
 		public void run() {
 			// Read FileName from Input Stream
 			try {
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(socket.getInputStream()));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				String line = reader.readLine();
 				File file = new File(line);
 				StringBuffer response = new StringBuffer();
 				if (file.exists()) {
-					response.append(file.getAbsolutePath() + ": size = "
-							+ file.length() + ", readable:" + file.canRead());
+					response.append(
+							file.getAbsolutePath() + ": size = " + file.length() + ", readable:" + file.canRead());
 				} else {
 					response.append("File " + line + " does not Exist");
 				}
 
 				// Send the response
-				PrintWriter pw = new PrintWriter(new OutputStreamWriter(
-						socket.getOutputStream()));
+				PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
 				pw.println(response.toString());
 				pw.flush();
