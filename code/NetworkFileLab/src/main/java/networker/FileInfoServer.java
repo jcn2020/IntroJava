@@ -22,7 +22,7 @@ public class FileInfoServer {
 		ExecutorService es = Executors.newFixedThreadPool(20);
 
 		try (ServerSocket ss = new ServerSocket(1234);) {
-			System.out.println("Started File Info server");
+			System.out.println("Started the File Info server");
 			for (;;) {
 				try {
 					Socket s = ss.accept();
