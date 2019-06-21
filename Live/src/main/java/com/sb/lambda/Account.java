@@ -1,6 +1,8 @@
 package com.sb.lambda;
 
-public interface Account {
+import java.util.Comparator;
+
+public interface Account extends Comparable<Account> {
 
 	/*
 	public enum Status {
@@ -9,6 +11,15 @@ public interface Account {
 		ABANDONED
 	}
 	*/
+
+    static class NameComparator implements Comparator<Account> {
+        @Override
+        public int compare(Account account1, Account account2) {
+            return account2.getName().compareTo(account1.getName());
+        }
+    }
+
+    public static NameComparator nameComp = new NameComparator();
 
     public static final int MAX_ID = Integer.MAX_VALUE;
 

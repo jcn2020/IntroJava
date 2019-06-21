@@ -38,4 +38,9 @@ public class VeryDifferentAccount implements Account {
             //send email about low balance
         }
     }
+
+    @Override
+    public int compareTo(Account other) {
+       return 0;
+    }
 }

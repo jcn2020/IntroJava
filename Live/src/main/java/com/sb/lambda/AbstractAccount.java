@@ -124,4 +124,17 @@ public abstract class AbstractAccount implements Account {
 	public int hashCode() {
 		return Objects.hash(id, name, balance);
 	}
+
+	@Override
+	public int compareTo(Account other) {
+		if(this.id < other.getId()) {
+			return -1;
+		}
+		else if(this.id == other.getId()) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
 }
