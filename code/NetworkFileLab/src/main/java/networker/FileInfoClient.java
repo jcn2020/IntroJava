@@ -22,6 +22,7 @@ public class FileInfoClient {
 				System.out.print("Enter File Name: ");
 				line = stdin.readLine();
 				if ("quit".equals(line)) {
+					System.out.println("Bye bye");
 					break;
 				}
 				processRequest(line);
