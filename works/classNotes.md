@@ -1,5 +1,11 @@
 ###  Lambda
 
+- sort account
+  - what to compare. sorting criteria (by id, balance, status)
+    - implement **strategy** as separate -- severals of them - hiding in interface.
+    - plug into algo
+- List<Accounts> accounts = new ArrayList<>() ; 
+
 Interface -> must implement to get concrete
 
 Interface  implements Interface?  
@@ -8,3 +14,4 @@ Interface  implements Interface?
 ```
 
 ```
+- sort -- public  satic <T> void sort ( List<T> list, Comparator<T> ) 
